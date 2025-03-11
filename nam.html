@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Webpage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+
+<body>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --header-height: 65px;
+            --page-color: #4b3f3f;
+            --welcome-color: #2d2c32;
+            --text-color: #b6a6a6;
+            --projects-color: #302927;
+            --contact-color: #303841;
+        }
+
+        html {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+        }
+
+        ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            height: var(--header-height);
+            background-color: var(--page-color);
+            overflow: hidden;
+            border-bottom: 1px solid black;
+            z-index: 1;
+        }
+
+        .headernav {
+            max-height: 65px;
+            height: 100%;
+        }
+
+        .header-nav-list {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .header-nav-list .nav-link {
+            display: inline-block;
+            font-size: 2.2rem;
+            height: 100%;
+            padding: 21px;
+            color: var(--text-color);
+        }
+
+        .header-nav-list .nav-link:hover {
+            background-color: #2e2929;
+            transition: 0.2s linear;
+        }
+
+        #welcome-section {
+            width: 100%;
+            height: 100vh;
+            background-color: var(--welcome-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: var(--header-height);
+            border-bottom: 1px solid black;
+            /* background-image: url(./assets/img/Namne.jpg);
+    background-repeat: no-repeat;
+    background-position:right ; */
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .info {
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            /* margin-left: 14rem; */
+            align-items: center;
+        }
+
+        .info-image #info-image {
+            width: 100%;
+            object-fit: cover;
+            height: 100vh;
+            border-style: groove;
+        }
+
+        .info-name {
+
+            width: 100%;
+            text-align: center;
+        }
+
+        hr {
+            margin: 1.5rem 0;
+            border: 1px solid rgba(120, 120, 120, 0.6);
+        }
+
+        .info-more {
+            padding: 24px;
+            margin-top: 4rem;
+            display: flex;
+            width: 60%;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.2rem;
+            color: var(--text-color);
+            font-style: italic;
+            font-family: system-ui;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+        }
+
+        .info-title {
+            font-size: 6rem;
+            font-weight: 500;
+            color: #b6a6a6;
+        }
+
+        .info-desc {
+            font-size: 3rem;
+            font-style: italic;
+            color: var(--page-color);
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        #projects {
+            width: 100%;
+            height: 100%;
+            background-color: var(--projects-color);
+            padding: 100px 16px;
+        }
+
+        .project-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .project-title h2 {
+            font-size: 3.3rem;
+            color: white;
+            border-bottom: 2px solid;
+            opacity: 0.7;
+            max-width: 640px;
+            width: 100%;
+            line-height: 1.6;
+        }
+
+        .project-tile {
+            padding-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            row-gap: 40px;
+            column-gap: 40px;
+        }
+
+        .project-tile-item:hover .hover-color {
+            color: var(--text-color);
+            transition: 0.5s linear;
+        }
+
+        .project-tile-item:hover {
+            transform: translateY(-4px);
+            transition: 0.5s linear;
+        }
+
+        .project-tile-item img {
+            width: 100%;
+            object-fit: cover;
+            height: calc(100% - 8rem);
+            border-radius: 4px 4px 0 0;
+        }
+
+        .project-tile-item p {
+            font-size: 2rem;
+            text-align: center;
+            padding: 16px 0;
+            background-color: var(--welcome-color);
+            position: relative;
+            top: -3px;
+            color: #fff;
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-tile-item span {
+            margin: 0 8px;
+            line-height: 1.5;
+        }
+
+        .hover-color {
+            color: var(--welcome-color);
+        }
+
+        #contact {
+            width: 100%;
+            height: 80vh;
+            background-color: var(--contact-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+        .contact-info h1 {
+            font-size: 4.5rem;
+            color: #fff;
+            opacity: 0.8;
+        }
+
+        .socials {
+            display: flex;
+            margin-top: 4rem;
+            width: 100%;
+            justify-content: center;
+            max-width: 980px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info p {
+            color: var(--text-color);
+            font-size: 2rem;
+            font-style: italic;
+            margin-top: 12px;
+            font-weight: normal;
+        }
+
+        .socials-icon {
+            padding: 12px 24px;
+            font-size: 2rem;
+
+        }
+
+        .socials-icon a {
+            color: white;
+            display: inline-block;
+        }
+
+        .socials-icon:hover {
+            transform: translateY(6px);
+            transition: 0.5s linear;
+        }
+
+        #footer {
+            width: 100%;
+            height: 100%;
+            background-color: var(--contact-color);
+            border-top: 5px solid var(--page-color);
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .footer-container div p {
+            font-size: 2rem;
+            color: white;
+            opacity: 0.6;
+            margin: 2rem;
+        }
+
+        /* Media Query for mobile */
+        @media (max-width: 767px) {
+            .project-tile {
+                padding-top: 50px;
+                display: grid;
+                grid-template-columns: 1fr;
+                row-gap: 40px;
+                column-gap: 40px;
+            }
+
+            .info-image #info-image {
+                display: none;
+            }
+        }
+
+        /* Media Query for Tablets Ipads portrait mode */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .project-tile {
+                padding-top: 50px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                row-gap: 40px;
+                column-gap: 40px;
+            }
+        }
+    </style>
+    <main>
+        <header>
+            <nav class="headernav" id="navbar">
+                <ul class="header-nav-list">
+                    <li>
+                        <a class="nav-link" href="#welcome-section">About</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#projects">Work</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="welcome-section">
+            <div class="info"">
+                <div class=" info-name">
+                <h1 class="info-title">I am NamNe</h1>
+                <p class="info-desc">I'm a student</p>
+            </div>
+
+            <blockquote class="info-more">
+                <p>I am <span class="bold">Nam</span>, currently I am a 2nd year student majoring in information
+                    technology from <span class="bold">Ho Chi Minh City University of Technology</span></p>
+            </blockquote>
+            </div>
+
+            <div class="info-image">
+                <img id="info-image" src="./assets/img/Namne.jpg" alt="">
+            </div>
+        </section>
+        <section id="projects">
+            <div class="project-title">
+                <h2>These are some of my projects</h2>
+            </div>
+            <div class="project-tile">
+                <a class="project-tile-item" href="https://namne2k3.github.io/Tribute-Page/">
+                    <img src="https://s.yimg.com/uu/api/res/1.2/VAICdvtsQoTxzevD6xnwfg--~B/aD0xMDgwO3c9MTA1NTthcHBpZD15dGFjaHlvbg--/https://media.zenfs.com/en/complex584/b3e8db841673249974bfa6b3c905305d"
+                        alt="image">
+                    <p><span class="hover-color">
+                            << /span>Tribute Page<span class="hover-color">/></span></p>
+                </a>
+                <a class="project-tile-item" href="https://namne2k3.github.io/Magazine-by-Namne/">
+                    <img src="./assets/img/Magazine.png" alt="image">
+                    <p><span class="hover-color">
+                            << /span>Magazine<span class="hover-color">/></span></p>
+                </a>
+                <a class="project-tile-item" href="https://namne2k3.github.io/Piano/">
+                    <img src="./assets/img/piano.png" alt="image">
+                    <p><span class="hover-color">
+                            << /span>Piano<span class="hover-color">/></span></p>
+                </a>
+                <a class="project-tile-item" href="https://namne2k3.github.io/Landing-Page/">
+                    <img src="./assets/img/landing_page.png" alt="image">
+                    <p><span class="hover-color">
+                            << /span>Landing Page<span class="hover-color">/></span></p>
+                </a>
+                <a class="project-tile-item" href="https://namne2k3.github.io/Music-UI-by-Namne/">
+                    <img src="./assets/img/MusicUI.png" alt="image">
+                    <p><span class="hover-color">
+                            << /span>Music UI<span class="hover-color">/></span></p>
+                </a>
+                <a class="project-tile-item" href="https://namne2k3.github.io/Penguin-Page/">
+                    <img src="./assets/img/Penguin.png" alt="image">
+                    <p><span class="hover-color">
+                            << /span>Penguin<span class="hover-color">/></span></p>
+                </a>
+                <a class="project-tile-item" href="">
+                    <img src="./assets/img/XO_game.png" alt="image">
+                    <p><span class="hover-color">
+                            << /span>Game XO<span class="hover-color">/></span></p>
+                </a>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="contact-info">
+                <h1>Let's work together...</h1>
+                <p>How do you take your coffee?</p>
+            </div>
+            <div class="socials">
+                <div class="socials-icon">
+                    <a href="https://www.facebook.com/namng1111/" id="profile-link" target="_blank">
+                        <i class="fab fa-facebook-square"></i>
+                        Facebook
+                    </a>
+                </div>
+                <div class="socials-icon">
+                    <a href="https://github.com/Namne2k3" id="profile-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        Github
+                    </a>
+                </div>
+                <div class="socials-icon">
+                    <a href="https://www.linkedin.com/in/nam-nguy%E1%BB%85n-undefined-24b53a252/" id="profile-link"
+                        target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        LinkeIn
+                    </a>
+                </div>
+                <div class="socials-icon">
+                    <a href="https://www.instagram.com/namng_113/" id="profile-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        Instagram
+                    </a>
+                </div>
+                <div class="socials-icon">
+                    <a href="#" id="profile-link" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                        Twitter
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="footer">
+        <div class="footer-container">
+            <div>
+                <p>**This is just a fake portfolio. All the projects and contact details given are not real.</p>
+            </div>
+            <div>
+                <p>© Created by Namne </p>
+            </div>
+
+        </div>
+    </footer>
+</body>
+
+</html>
